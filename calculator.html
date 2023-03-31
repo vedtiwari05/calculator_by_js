@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button{
+        background-color: greenyellow;
+        width: 104px;
+        height: 45px;
+        text-align: center;
+    }
+</style>
+<body>
+    <!-- <label for="1st no"></label> -->
+   <textarea name="value" id="value" cols="55" rows="5" onkeypress="onlynumbers()"></textarea><br>
+    <div id="operators">
+     <button id="+" onclick="saveValue('+')">+</button> 
+     <button id="-" onclick="saveValue('-')">-</button> 
+     <button id="*" onclick="saveValue('*')">*</button> 
+     <button id="/" onclick="saveValue('/')">/</button> <br>
+     <button onclick="document.getElementById('value').value+=1">1</button>
+     <button onclick="document.getElementById('value').value+=2">2</button>
+     <button onclick="document.getElementById('value').value+=3">3</button> 
+     <button id="%" onclick="saveValue('%')">%</button><br>
+     <button onclick="document.getElementById('value').value+=4">4</button>
+     <button onclick="document.getElementById('value').value+=5">5</button>
+     <button onclick="document.getElementById('value').value+=6">6</button> 
+     <button id="AC" onclick="document.getElementById('value').value='';first=0;second=0;operation=''">AC</button><br>
+     <button onclick="document.getElementById('value').value+=7">7</button>
+     <button onclick="document.getElementById('value').value+=8">8</button>
+     <button onclick="document.getElementById('value').value+=9">9</button> 
+     <button id="=" onclick="equals()">=</button><br>
+     <button onclick="document.getElementById('value').value+='.'"><b>.</b></button>
+     <button id="0" onclick="document.getElementById('value').value+=0">0</button>
+     <button id="DEL"onclick="document.getElementById('value').value=parseInt(parseInt(document.getElementById('value').value)/10)" >DEL</button>
+     <button><b><i>VPT</i></b></button>
+    </div>
+    <script>
+        first=0 
+        second=0
+        operation=""
+      function saveValue(oper){
+        first= parseFloat(document.getElementById('value').value)
+        document.getElementById('value').value=""
+        operation=oper
+
+      }
+      function equals(){
+        second=parseFloat(document.getElementById('value').value)
+        if(operation=='+')
+        document.getElementById('value').value=first+second
+        if(operation=='-')
+        document.getElementById('value').value=first-second
+        if(operation=='*')
+        document.getElementById('value').value=first*second
+        if(operation=='/')
+        document.getElementById('value').value=first/second
+        if(operation=='%')
+        document.getElementById('value').value=first/second*100
+      }
+      function onlynumbers(){
+
+        if(!(event.keyCode>=48 && event.keyCode<=57))
+        event.preventDefault()
+      }
+    </script>
+</body>
+</html>
